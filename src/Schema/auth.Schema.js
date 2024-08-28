@@ -11,8 +11,8 @@ import { z } from "zod";
     }),
     password: z.string({
         required_error: "la contraseña es requerida",
-    }).min(6,{
-        message: "la contraseña debe tener al menos 6 caracteres"
+    }).min(8,{
+        message: "la contraseña debe tener al menos 8 caracteres"
     })
 })
 
