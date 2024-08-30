@@ -29,7 +29,7 @@ export default [
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
       'react/jsx-no-target-blank': 'off',
-      'react-refresh/only-export-components': 'off', // Desactiva la regla globalmente
+      'react-refresh/only-export-components': 'off',
     },
   },
 ];
