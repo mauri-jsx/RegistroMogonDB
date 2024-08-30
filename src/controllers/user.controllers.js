@@ -7,7 +7,7 @@ export const registro = async (req, res) => {
         const { name, email, password } = req.body;
         const userFound = await User.findOne({ email });
         if (userFound) {
-            return res.status(400).send({message:["El usuario ya existe"]});
+            return res.status(400).send(["El usuario ya existe"]);
         }
         const passwordHash = await bcrypt.hash(password, 10);
         const newUser = new User({ 
