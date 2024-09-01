@@ -1,17 +1,25 @@
 import { useForm } from "react-hook-form";
+import { useAuth } from "../context/AuthContext";
 function LoginPage() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { signin, errors: SigniErrors } = useAuth();
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
+    signin(data);
   });
 
   return (
     <div className="flex h-[calc(100vh-100px)] items-center justify-center">
       <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
+        {SigniErrors.map((error, i) => (
+          <div className="bg-red-500 p-2 text-white text-center" key={i}>
+            {error}
+          </div>
+        ))}
+        <h1 className="text-2xl font-bold ">Inicio sesión</h1>
         <form onSubmit={onSubmit}>
           <input
             type="email"
@@ -35,7 +43,7 @@ function LoginPage() {
             <p className="text-red-500">{errors.password.message}</p>
           )}
 
-          <button type="submit">Register</button>
+          <button type="submit">Login</button>
         </form>
       </div>
     </div>
